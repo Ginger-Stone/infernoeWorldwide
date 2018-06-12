@@ -1,0 +1,801 @@
+{% extends "infernoeWorldwide/base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Infernoe Worldwide</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container">
+      <div class="intro-text">
+        <div class="intro-lead-in">Welcome To Infernoe Worldwide</div>
+        <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Services</h2>
+          <h3 class="section-subheading text-muted"></h3>
+        </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+            <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+          </span>
+	  {% if latest_service_list %}
+	  {% for service in latest_service_list %}
+	  <h4 class="service-heading">{{ service.service_name }}</h4>
+	  <p class="text-muted">{{ service.service_description }}</p>
+	  {% endfor %}
+	  {% endif %}
+        </div>
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+            <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+          </span>
+	  {% if latest_service2_list %}
+	  {% for service2 in latest_service2_list %}
+	  <h4 class="service-heading">{{ service2.service_name }}</h4>
+	  <p class="text-muted">{{ service2.service_description }}</p>
+	  {% endfor %}
+	  {% endif %}
+        </div>
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+            <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+          </span>
+	  {% if latest_service3_list %}
+	  {% for service3 in latest_service3_list %}
+	  <h4 class="service-heading">{{ service3.service_name }}</h4>
+	  <p class="text-muted">{{ service3.service_description }}</p>
+	  {% endfor %}
+	  {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Portfolio Grid -->
+  <section class="bg-light" id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Portfolio</h2>
+          <h3 class="section-subheading text-muted">Infernoe Worldwide Accomplishments.</h3>
+        </div>
+      </div>
+      <div class="row">
+        {% if latest_portfolio_list %}
+  	    {% for portfolio in latest_portfolio_list %}
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-plus fa-3x"></i>
+              </div>
+            </div>
+	    <img class="img-fluid" src="{{ portfolio.image.url }}" alt="Image">
+          </a>
+          <div class="portfolio-caption">
+		  <h4>{{ portfolio.project_name }}</h4>
+		  <p class="text-muted">{{ portfolio.intro_text }}</p>
+          </div>
+        </div>
+        {% endfor %}
+    	  {% endif %}
+
+    	  {% if latest1_portfolio_list %}
+    	  {% for portfolio in latest1_portfolio_list %}
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-plus fa-3x"></i>
+              </div>
+            </div>
+	    <img class="img-fluid" src="{{ portfolio.image.url }}" alt="">
+	  </a>
+          <div class="portfolio-caption">
+          <h4>{{ portfolio.project_name }}</h4>
+	  <p class="text-muted">{{ portfolio.into_text }}</p>
+          </div>
+        </div>
+        {% endfor %}
+    	  {% endif %}
+
+        {% if latest2_portfolio_list %}
+        {% for portfolio in latest2_portfolio_list %}
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-plus fa-3x"></i>
+              </div>
+            </div>
+	    <img class="img-fluid" src="{{ portfolio.image.url }}" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>{{ portfolio.project_name }}</h4>
+            <p class="text-muted">{{ portfolio.intro_text }}</p>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if latest3_portfolio_list %}
+        {% for portfolio in latest3_portfolio_list %}
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{{ portfolio.image.url}}" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>{{ portfolio.project_name }}</h4>
+            <p class="text-muted">{{ portfolio.intro_text }}</p>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if latest4_portfolio_list %}
+        {% for portfolio in latest4_portfolio_list %}
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{{ portfolio.image.url }}" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>{{ portfolio.project_name }}</h4>
+            <p class="text-muted">{{ portfolio.intro_text }}</p>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if latest5_portfolio_list %}
+        {% for portfolio in latest5_portfolio_list %}
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{{ portfolio.image.url }}" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>{{ portfolio.project_name }}</h4>
+            <p class="text-muted">{{ portfolio.intro_text }}</p>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+   </div>
+  </section>
+
+  <!-- Events -->
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Upcoming Events</h2>
+          <h3 class="section-subheading text-muted">Join us as we seek to see the world in Infernoe's eyes</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="timeline">
+            {% if latest_event_list %}
+            {% for event in latest_event_list %}
+            <li>
+              <div class="timeline-image">
+                <img class="rounded-circle events" src="{{ event.image.url }}" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>{{ event.date }}</h4>
+                  <h4 class="subheading">{{ event.event }}</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted">{{ event.event_info }}</p>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+            {% endif %}
+
+            {% if latest1_event_list %}
+            {% for event in latest1_event_list %}
+            <li class="timeline-inverted">
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="{{ event.image.url }}" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>{{ event.date }}</h4>
+                  <h4 class="subheading">{{ event.event }}</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted">{{ event.event_info }}</p>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+            {% endif %}
+
+            {% if latest2_event_list %}
+            {% for event in latest2_event_list %}
+            <li>
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="{{ event.image.url }}" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>{{ event.date }}</h4>
+                  <h4 class="subheading">{{ event.event }}</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted">{{ event.event_info}}</p>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+            {% endif %}
+
+            {% if latest3_event_list %}
+            {% for event in latest3_event_list %}
+            <li class="timeline-inverted">
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="{{ event.image.url }}" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>{{ event.date }}</h4>
+                  <h4 class="subheading">{{ event.event }}</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted">{{ event.event_info }}</p>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+            {% endif %}
+
+            <li class="timeline-inverted">
+              <div class="timeline-image">
+<a class="btn-primary text-uppercase js-scroll-trigger" href="#services"><h4>Register
+                  <br>for an
+                  <br>Event</h4></a>
+</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="bg-light" id="team">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+          <h3 class="section-subheading text-muted">Meet the brains behind Infernoe Worldwide</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          {% if latest_member_list %}
+          {% for infernoeTeam in latest_member_list %}
+          <div class="team-member">
+            <img class="mx-auto rounded-circle" src="{{ infernoeTeam.image.url }}" alt="">
+            <h4>{{ infernoeTeam.first_name }} {{ infernoeTeam.last_name }}</h4>
+            <p class="text-muted">{{ infernoeTeam.position }}</p>
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-instagram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-snapchat-ghost"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if latest1_member_list %}
+        {% for infernoeteam in latest1_member_list %}
+        <div class="col-sm-4">
+          <div class="team-member">
+            <img class="mx-auto rounded-circle" src="{{ infernoeteam.image.url }}" alt="">
+            <h4>{{ infernoeteam.first_name }} {{ infernoeteam.last_name }}</h4>
+            <p class="text-muted">{{ infernoeteam.position }}</p>
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-instagram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-snapchat-ghost"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if latest2_member_list %}
+        {% for infernoeteam in latest2_member_list %}
+        <div class="col-sm-4">
+          <div class="team-member">
+            <img class="mx-auto rounded-circle" src="{{ infernoeteam.image.url }}" alt="">
+            <h4>{{ infernoeteam.first_name }} {{ infernoeteam.last_name }}</h4>
+            <p class="text-muted">{{ infernoeteam.position }}</p>
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-instagram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-snapchat-ghost"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <p class="large text-muted">At infernoe Worldwide, we prepare for the future.....</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <!-- <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="{% static 'img/logos/envato.jpg' %}" alt="">
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="{% static 'img/logos/designmodo.jpg' %}" alt="">
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="{% static 'img/logos/themeforest.jpg' %}" alt="">
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="{% static 'img/logos/creative-market.jpg' %}" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Contact -->
+  <section id="contact">
+	  {{ form.non_field_errors }}
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Contact Us</h2>
+          <h3 class="section-subheading text-muted">Feel free to talk to us, let us be of service to you.</h3>
+        </div>
+      </div>
+       <div class="row">
+        <div class="col-lg-12">
+          <form id="contactForm" name="sentMessage" method="post"  novalidate>
+{% csrf_token %}
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                      <div class="form-control">
+                      {{ form.subject.errors }}
+                      <label for="{{ form.subject.id_for_label }}">Your Name:</label>
+                      {{ form.subject }}
+                    </div>
+                <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group">
+			<div class="form-control">
+                         {{ form.your_email.errors }}
+<label for="{{ form.subject.id_for_label }}">Email Address:</label>
+                         {{ form.your_email }}
+			</div>
+                  <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group">
+			<div class="form-control">
+                         {{ form.phone_number.errors }}
+<label for="{{ form.subject.id_for_label }}">Phone Number:</label>
+                         {{ form.phone_number }}
+			</div>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+			<div class="form-control">
+                         {{ form.message.errors }}
+<label for="{{ form.subject.id_for_label }}">Message:</label>
+                         {{ form.message }}
+			</div>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="col-lg-12 text-center">
+                <div id="success"></div>
+                <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <span class="copyright">Copyright &copy;2018 Infernoe Worldwide</span>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-snapchat-ghost"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline quicklinks">
+            <li class="list-inline-item">
+              <a href="#">Created by Chemwen0</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Portfolio Modals -->
+
+  <!-- Modal 1 -->
+
+  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                {% if latest_portfolio_list %}
+                {% for portfolio in latest_portfolio_list %}
+		<h2 class="text-uppercase">{{ portfolio.project_name }}</h2>
+		<p class="item-intro text-muted">{{ portfolio.intro_text }}</p>
+		<img class="img-fluid d-block mx-auto" src="{{ portfolio.image.url }}" alt="">
+		<p>{{ portfolio.project_description }}</p>
+                <ul class="list-inline">
+	          <li>{{ portfolio.date }}</li>
+		  <li>{{ portfolio.client }}</li>
+		  <li>{{ portfolio.category }}</li>
+                </ul>
+                {% endfor %}
+                {% endif %}
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fa fa-times"></i>
+                  Close Project</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+
+  <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                {% if latest1_portfolio_list %}
+                {% for portfolio in latest1_portfolio_list %}
+		<h2 class="text-uppercase">{{ portfolio.project_name }}</h2>
+		<p class="item-intro text-muted">{{ portfolio.intro_text }}</p>
+		<img class="img-fluid d-block mx-auto" src="{{ portfolio.image.url }}" alt="">
+		<p>{{ portfolio.project_description }}</p>
+                <ul class="list-inline">
+	        <li>{{ portfolio.date }}</li>
+                <li>{{ portfolio.client }}</li>
+		<li>{{ portfolio.category }}</li>
+                </ul>
+                {% endfor %}
+                {% endif %}
+
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fa fa-times"></i>
+                  Close Project</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+
+  <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                {% if latest2_portfolio_list %}
+                {% for portfolio in latest2_portfolio_list %}
+                <h2 class="text-uppercase">{{ portfolio.project_name }}</h2>
+                <p class="item-intro text-muted">{{ portfolio.intro_text }}</p>
+                <img class="img-fluid d-block mx-auto" src="{{ portfolio.image.url }}" alt="">
+                <p>{{ portfolio.project_description}}</p>
+                <ul class="list-inline">
+                  <li>Date: {{ portfolio.date }}</li>
+                  <li>Client: {{ portfolio.client }}</li>
+                  <li>Category: {{ portfolio.category }}</li>
+                </ul>
+                {% endfor %}
+                {% endif %}
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fa fa-times"></i>
+                  Close Project</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+
+  <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                {% if latest3_portfolio_list %}
+                {% for portfolio in latest3_portfolio_list %}
+                <h2 class="text-uppercase">{{ portfolio.project_name }}</h2>
+                <p class="item-intro text-muted">{{ portfolio.intro_text }}</p>
+                <img class="img-fluid d-block mx-auto" src="{{ portfolio.image.url }}" alt="">
+                <p>{{ portfolio.project_description}}</p>
+                <ul class="list-inline">
+                  <li>Date: {{ portfolio.date }}</li>
+                  <li>Client: {{ portfolio.client }}</li>
+                  <li>Category: {{ portfolio.category }}</li>
+                </ul>
+                {% endfor %}
+                {% endif %}
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fa fa-times"></i>
+                  Close Project</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5 -->
+
+  <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                {% if latest4_portfolio_list %}
+                {% for portfolio in latest4_portfolio_list %}
+                <h2 class="text-uppercase">{{ portfolio.project_name }}</h2>
+                <p class="item-intro text-muted">{{ portfolio.intro_text }}</p>
+                <img class="img-fluid d-block mx-auto" src="{{ portfolio.image.url }}" alt="">
+                <p>{{ portfolio.project_description}}</p>
+                <ul class="list-inline">
+                  <li>Date: {{ portfolio.date }}</li>
+                  <li>Client: {{ portfolio.client }}</li>
+                  <li>Category: {{ portfolio.category }}</li>
+                </ul>
+                {% endfor %}
+                {% endif %}
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fa fa-times"></i>
+                  Close Project</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal 6 -->
+
+  <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                {% if latest5_portfolio_list %}
+                {% for portfolio in latest5_portfolio_list %}
+                <h2 class="text-uppercase">{{ portfolio.project_name }}</h2>
+                <p class="item-intro text-muted">{{ portfolio.intro_text }}</p>
+                <img class="img-fluid d-block mx-auto" src="{{ portfolio.image.url }}" alt="">
+                <p>{{ portfolio.project_description}}</p>
+                <ul class="list-inline">
+                  <li>Date: {{ portfolio.date }}</li>
+                  <li>Client: {{ portfolio.client }}</li>
+                  <li>Category: {{ portfolio.category }}</li>
+                </ul>
+                {% endfor %}
+                {% endif %}
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fa fa-times"></i>
+                  Close Project</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
